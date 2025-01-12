@@ -1,0 +1,58 @@
+streamlit.runtime.caching.cache_errors.UnhashableParamError: Cannot hash argument 'query' (of type sqlalchemy.sql.elements.TextClause) in 'query_data'.
+
+To address this, you can tell Streamlit not to hash this argument by adding a leading underscore to the argument's name in the function signature:
+
+@st.cache_data
+def query_data(_query, ...):
+    ...
+
+Traceback:
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 88, in exec_func_with_error_handling
+    result = func()
+             ^^^^^^
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 579, in code_to_exec
+    exec(code, module.__dict__)
+File "/home/runner/workspace/app.py", line 166, in <module>
+    main()
+File "/home/runner/workspace/app.py", line 45, in main
+    login_page()
+File "/home/runner/workspace/app.py", line 33, in login_page
+    if auth.login(email, password):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/home/runner/workspace/utils/auth.py", line 10, in login
+    df = self.db.verify_user(email, password)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/home/runner/workspace/utils/database.py", line 46, in verify_user
+    return self.query_data(text(query).bindparams(email=email, password=password))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/streamlit/runtime/caching/cache_utils.py", line 174, in __call__
+    return self._cached_func(self._instance, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/streamlit/runtime/caching/cache_utils.py", line 218, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/streamlit/runtime/caching/cache_utils.py", line 233, in _get_or_create_cached_value
+    value_key = _make_value_key(
+                ^^^^^^^^^^^^^^^^
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/streamlit/runtime/caching/cache_utils.py", line 457, in _make_value_key
+    raise UnhashableParamError(cache_type, func, arg_name, arg_value, exc)
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/streamlit/runtime/caching/cache_utils.py", line 449, in _make_value_key
+    update_hash(
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/streamlit/runtime/caching/hashing.py", line 160, in update_hash
+    ch.update(hasher, val)
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/streamlit/runtime/caching/hashing.py", line 343, in update
+    b = self.to_bytes(obj)
+        ^^^^^^^^^^^^^^^^^^
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/streamlit/runtime/caching/hashing.py", line 325, in to_bytes
+    b = b"%s:%s" % (tname, self._to_bytes(obj))
+                           ^^^^^^^^^^^^^^^^^^^
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/streamlit/runtime/caching/hashing.py", line 568, in _to_bytes
+    self.update(h, item)
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/streamlit/runtime/caching/hashing.py", line 343, in update
+    b = self.to_bytes(obj)
+        ^^^^^^^^^^^^^^^^^^
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/streamlit/runtime/caching/hashing.py", line 325, in to_bytes
+    b = b"%s:%s" % (tname, self._to_bytes(obj))
+                           ^^^^^^^^^^^^^^^^^^^
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/streamlit/runtime/caching/hashing.py", line 565, in _to_bytes
+    raise UnhashableTypeError() from ex

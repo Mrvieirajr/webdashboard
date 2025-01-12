@@ -1,0 +1,44 @@
+Crie uma página web responsiva que funcione como um dashboard interativo, utilizando Python com a biblioteca Streamlit
+
+Requisitos da Página:
+Layout:
+
+Incluir gráficos interativos como gráficos de linha, barras e pizza utilizando bibliotecas como Plotly, Altair, ou Matplotlib.
+Preferencialmente use totos os recursos da Streamlit.
+Exibir métricas importantes em cards informativos (caixas com números ou indicadores-chave).
+Mostrar dados tabulares de um banco de dados em tabelas dinâmicas, com a capacidade de realizar buscas e ordenações.
+Adicionar filtros interativos (como caixas de seleção, sliders ou dropdowns) para manipulação dos dados exibidos.
+
+Responsividade e Design:
+
+Garantir que o layout seja amigável e funcione bem em dispositivos móveis, tablets e desktops.
+A interface deve ser limpa, moderna e priorizar a experiência do usuário.
+Utilizar a funcionalidade de layout do Streamlit para organizar os gráficos, tabelas e cards de forma visualmente agradável.
+
+Backend e Integração de Dados:
+
+Conectar ao banco de dados ( BigQuery ) .
+Processar e formatar os dados no backend antes de exibi-los no dashboard.
+
+Funcionalidades Interativas:
+
+Permitir que os usuários filtrem os dados diretamente no dashboard, atualizando gráficos e tabelas em tempo real.
+Incluir botões para realizar ações específicas, como exportar os dados filtrados para um arquivo CSV ou JSON.
+Adicionar caixas de texto ou sliders para parametrizar consultas ou simulações.
+
+Estilo e Detalhes Visuais:
+
+Utilizar Streamlit Components ou bibliotecas adicionais para personalizar o estilo dos gráficos e componentes (como Streamlit Card ou Streamlit Elements).
+Adicionar animações ou transições suaves para melhorar a experiência de atualização dos dados.
+Utilizar uma paleta de cores que destaque as informações importantes e siga boas práticas de design para dashboards.
+
+
+Tecnologias sugeridas:
+
+Framework: Streamlit.
+Bibliotecas para gráficos: Plotly, Altair, Matplotlib ou Seaborn.
+Banco de dados: BigQuery.
+Tabelas interativas: Streamlit Ag-Grid ou pandas DataFrame.
+Certifique-se de que o código seja bem documentado, modular e fácil de atualizar para futuras melhorias.
+
+Nota: Priorize a criação de uma interface funcional, interativa e visualmente atrativa, que permita aos usuários explorar os dados de forma eficiente.
